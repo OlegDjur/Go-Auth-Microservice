@@ -1,0 +1,14 @@
+server:
+  Port: :8080
+  JwtSecretKey: secretKey
+  CookieName: jwt-token
+  ReadTimeout: 5
+  WriteTimeout: 5
+
+postgres:
+  PostgresHost: localhost
+  PostresPort: 5432
+  PostgresUser: olegdjur
+  PostgresPassword: qwerty
+  PostgresDBName: auth_db
+  
