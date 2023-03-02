@@ -11,4 +11,4 @@ postgres:
   PostgresUser: olegdjur
   PostgresPassword: qwerty
   PostgresDBName: auth_db
-  
+  Ssl: disable
