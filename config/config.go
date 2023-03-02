@@ -29,6 +29,8 @@ type PostgresConfig struct {
 	PostgresPort     string
 	PostgresUser     string
 	PostgresPassword string
+	PostgresDBName   string
+	PgDriver         string
 	Ssl              string
 }
 

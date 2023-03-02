@@ -7,8 +7,9 @@ server:
 
 postgres:
   PostgresHost: localhost
-  PostresPort: 5432
+  PostgresPort: 5432
   PostgresUser: olegdjur
   PostgresPassword: qwerty
   PostgresDBName: auth_db
+  PgDriver: postgres
   Ssl: disable
