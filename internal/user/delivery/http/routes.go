@@ -2,7 +2,7 @@ package http
 
 import "github.com/gin-gonic/gin"
 
-func (h *UserHandler) InitRoutes() *gin.Engine {
+func (h *handler) InitRoutes() *gin.Engine {
 	router := gin.Default()
 
 	router.POST("/user", h.createUser)

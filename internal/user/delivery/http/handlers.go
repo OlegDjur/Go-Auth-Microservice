@@ -12,24 +12,28 @@ type handler struct {
 	service user.Service
 }
 
-func NewUserHandler() *UserHandler {
-	return &UserHandler{}
+func NewUserHandler() *handler {
+	return &handler{}
 }
 
-func (h *UserHandler) createUser(c *gin.Context) {
-	var user dto.CreateUserRequest
+func (h *handler) createUser(c *gin.Context) {
+	var req dto.CreateUserRequest
 
-	if err := c.ShouldBindJSON(&user); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	user, err := h.service.Create(user)
+	user, err := h.service.Create(&req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
+
+	res := dto.NewUserResponse(user)
+
+	c.JSON(http.StatusOK, res)
 }
 
-func (h *UserHandler) loginUser(c *gin.Context) {
+func (h *handler) loginUser(c *gin.Context) {
 }
