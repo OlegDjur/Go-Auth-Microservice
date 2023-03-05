@@ -9,3 +9,8 @@ type Service interface {
 	Create(*dto.CreateUserRequest) (models.User, error)
 	Login(*dto.LoginUserRequest) (models.User, string, error)
 }
+
+type Repository interface {
+	Create(*dto.CreateUserRequest) (models.User, error)
+	Login(*dto.LoginUserRequest) (models.User, string, error)
+}
