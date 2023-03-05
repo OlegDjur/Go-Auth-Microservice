@@ -35,3 +35,10 @@ func NewUserResponse(user models.User) *UserResponse {
 		CreatedAt: user.CreatedAt,
 	}
 }
+
+func NewLoginUserResponse(user models.User, token string) *LoginUserResponse {
+	return &LoginUserResponse{
+		AccessToken: token,
+		User:        *NewUserResponse(user),
+	}
+}
