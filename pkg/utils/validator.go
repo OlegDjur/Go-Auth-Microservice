@@ -16,3 +16,16 @@ func CheckEmail(email string) error {
 
 	return nil
 }
+
+func CheckLen(arg string, lenMin, lenMax int) error {
+	if len(arg) < lenMin {
+		return fmt.Errorf("%v should contain at lest %v characters", arg, lenMin)
+	}
+
+	if len(arg) > lenMax {
+		return fmt.Errorf("%v should contain more than %v characters", arg, lenMin)
+
+	}
+
+	return nil
+}
