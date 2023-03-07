@@ -3,6 +3,7 @@ package utils
 import (
 	"fmt"
 	"regexp"
+	"strings"
 )
 
 const alphaNumeric = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
@@ -25,6 +26,16 @@ func CheckLen(arg string, lenMin, lenMax int) error {
 	if len(arg) > lenMax {
 		return fmt.Errorf("%v should contain more than %v characters", arg, lenMin)
 
+	}
+
+	return nil
+}
+
+func OnlyAlphabet(arg string) error {
+	for _, v := range arg {
+		if !strings.ContainsAny(string(v), onlyAlphabet) {
+			return fmt.Errorf("%s should contain only alphabet characters", arg)
+		}
 	}
 
 	return nil
