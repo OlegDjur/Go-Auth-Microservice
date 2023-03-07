@@ -20,4 +20,5 @@ func (s *service) Create(user *dto.CreateUserRequest) (*models.User, error) {
 	if err != nil {
 		return nil, err
 	}
+
 }
