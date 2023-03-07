@@ -40,3 +40,11 @@ func OnlyAlphabet(arg string) error {
 
 	return nil
 }
+
+func CheckNull(arg string) error {
+	if len(arg) == 0 {
+		return fmt.Errorf("field should not be empty")
+	}
+
+	return nil
+}
