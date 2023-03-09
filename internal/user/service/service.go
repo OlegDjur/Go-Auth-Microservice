@@ -4,6 +4,7 @@ import (
 	"github.com/OlegDjur/Go-Auth-Microservice/internal/models"
 	"github.com/OlegDjur/Go-Auth-Microservice/internal/user"
 	"github.com/OlegDjur/Go-Auth-Microservice/internal/user/dto"
+	"github.com/OlegDjur/Go-Auth-Microservice/pkg/utils"
 )
 
 type service struct {
@@ -15,10 +16,15 @@ func NewService(repo *user.Repository) *service {
 }
 
 func (s *service) Create(user *dto.CreateUserRequest) (*models.User, error) {
-
-	user, err := s.repo.Create(user)
+	err := utils.ValidateUser(user)
 	if err != nil {
 		return nil, err
 	}
 
+	user, err = s.repo.Create(user)
+	if err != nil {
+		return nil, err
+	}
+
+	return user, nil
 }
