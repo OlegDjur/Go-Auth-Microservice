@@ -34,6 +34,8 @@ func ValidateUser(user *dto.CreateUserRequest) error {
 	if err != nil {
 		return err
 	}
+
+	return nil
 }
 
 func CheckEmail(email string) error {

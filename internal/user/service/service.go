@@ -15,13 +15,18 @@ func NewService(repo *user.Repository) *service {
 	return &service{repo}
 }
 
-func (s *service) Create(user *dto.CreateUserRequest) (*models.User, error) {
-	err := utils.ValidateUser(user)
+func (s *service) Create(req *dto.CreateUserRequest) (*models.User, error) {
+	err := utils.ValidateUser(req)
 	if err != nil {
 		return nil, err
 	}
 
-	user, err = s.repo.Create(user)
+	req.Password, err := HashPassword(req.Password)
+	if err != nil {
+		return nil, err
+	}
+
+	user, err := s.repo.Create(req)
 	if err != nil {
 		return nil, err
 	}
